@@ -31,7 +31,7 @@ export default defineComponent({
   data: () => ({
     drawer: false,
     items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/about'},
+          { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/dashboard'},
           { title: 'Photos', icon: 'mdi-image', link: '/about' },
           { title: 'About', icon: 'mdi-help-box', link: '/about' },
         ]

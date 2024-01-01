@@ -1,6 +1,5 @@
 <template>
   <NavBar/>
-  <AuthForm/>
 </template>
 
 <script lang="ts">
@@ -8,14 +7,12 @@ import { defineComponent } from 'vue';
 
 // Components
 import NavBar from '@/components/NavBar.vue';
-import AuthForm from '@/components/AuthForm.vue';
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'DashBoard',
 
   components: {
     NavBar,
-    AuthForm,
 },
 });
 </script>
