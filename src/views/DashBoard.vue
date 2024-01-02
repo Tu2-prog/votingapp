@@ -63,21 +63,16 @@ th {
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import storageEndpoint from "../endpoints";
+import VotingItems from '@/interfaces';
 // Components
 import NavBar from '@/components/NavBar.vue';
-
-interface VotinItems {
-  id: string;
-  title: string;
-  location: string;
-}
 
 export default defineComponent({
   name: 'DashBoard',
 
   data() {
     return {
-      elements: [] as VotinItems[]
+      elements: [] as VotingItems[]
     };
   },
 
