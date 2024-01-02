@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
   export default defineComponent({
-    name: 'AuthForm',
+    name: 'AddVote',
 
     data: () => ({
       accessCode: '',

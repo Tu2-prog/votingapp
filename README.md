@@ -1,4 +1,4 @@
-# votingapp
+# Evoter
 
 ## Project setup
 ```
