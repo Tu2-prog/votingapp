@@ -5,7 +5,7 @@
   </div>
   <div class="form">
     <v-sheet width="400px" class="mx-auto">
-      <v-form @submit.prevent="submitEvent">
+      <v-form ref="form" @submit.prevent="submitEvent">
         <v-text-field
           v-model="title"
           :rules="rules"
@@ -63,6 +63,8 @@ import storageEndpoint from '../endpoints';
           location: this.location,
         }
         axios.post(storageEndpoint + '/create', req);
+        const refForm: any = this.$refs.form;
+        refForm.reset();
       }
     }
   });
