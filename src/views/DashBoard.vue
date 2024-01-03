@@ -82,7 +82,7 @@ export default defineComponent({
 
   mounted(){
     axios
-      .get(storageEndpoint)
+      .get(storageEndpoint + "/get")
       .then(response => (this.elements = response.data))
   },
 

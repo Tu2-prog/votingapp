@@ -5,16 +5,17 @@
   </div>
   <div class="form">
     <v-sheet width="400px" class="mx-auto">
-      <v-form @submit.prevent>
+      <v-form @submit.prevent="submitEvent">
         <v-text-field
           v-model="title"
           :rules="rules"
           label="Title"
         ></v-text-field>
         <v-select
+          v-model="location"
           :items="items"
           density="compact"
-          label="Compact"
+          label="Location"
         ></v-select>
         <v-btn type="submit" block class="mt-2">Add Event</v-btn>
       </v-form>
@@ -37,11 +38,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios';
+import storageEndpoint from '../endpoints';
+
   export default defineComponent({
     name: 'AddVote',
 
     data: () => ({
       title: '',
+      location: '',
       rules: [
         (value: string | null) => {
           if (value) return true;
@@ -50,5 +55,15 @@ import { defineComponent } from 'vue';
       ],
       items: ['Germany', 'United States']
     }),
+
+    methods: {
+      submitEvent() {
+        const req = {
+          title: this.title,
+          location: this.location,
+        }
+        axios.post(storageEndpoint + '/create', req);
+      }
+    }
   });
 </script>
