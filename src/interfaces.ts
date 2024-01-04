@@ -1,5 +1,5 @@
 interface VotingItems {
-    id: string;
+    _id: number;
     title: string;
     location: string;
     no_votes: number;

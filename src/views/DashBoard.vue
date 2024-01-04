@@ -11,11 +11,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="element in elements" :key="element.id">
+        <tr v-for="element in elements" :key="element._id">
           <td>{{ element.title }}</td>
           <td>{{ element.location }}</td>
           <td> 
-            <v-btn elevated color="#06ca8f" @click="sayHello">Vote</v-btn>
+            <v-btn elevated color="#06ca8f" @click="makeVote(element._id)">Vote</v-btn>
             <v-btn elevated color="#d44d4d" class="delete-btn">Delete</v-btn>
           </td>
         </tr>
@@ -87,10 +87,9 @@ export default defineComponent({
   },
 
   methods: {
-    sayHello(){
-      axios
-      .get(storageEndpoint)
-      .then(response => (this.elements = response.data))
+    makeVote(elementId: number){
+      axios.patch(storageEndpoint + "/update/" + elementId);
+      this.$router.push({path: '/votes'});
     }
   }
 });
