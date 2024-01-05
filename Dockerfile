@@ -5,6 +5,9 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
+ARG TOKEN
+ENV TOKEN=${TOKEN}
+
 EXPOSE 8081
 
 # Finally runs the application

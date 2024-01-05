@@ -15,7 +15,7 @@
           <td>{{ element.title }}</td>
           <td>{{ element.location }}</td>
           <td> 
-            <v-btn elevated color="#06ca8f" @click="makeVote(element._id)">Vote</v-btn>
+            <v-btn elevated color="#d44d4d" class="delete-btn">Delete</v-btn>
           </td>
         </tr>
       </tbody>
@@ -45,6 +45,17 @@ th {
   overflow-y: auto; /* Enables vertical scrolling if content exceeds viewport height */
   padding: 20px; /* Adjust as needed */
 }
+
+.delete-btn{
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 405px) and (min-width: 375px) {
+  .delete-btn{
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+}
 </style>
 
 <script lang="ts">
@@ -56,7 +67,7 @@ import VotingItems from '@/interfaces';
 import NavBar from '@/components/NavBar.vue';
 
 export default defineComponent({
-  name: 'DashBoard',
+  name: 'AdminView',
 
   data() {
     return {

@@ -1,17 +1,20 @@
 <template>
     <div class="content">
+      <div class="counter-container">
+        Total Votes: {{ this.overAllVotes }}
+      </div>
         <NavBar/>
         <table>
           <thead>
             <tr>
               <th>Title</th>
               <th>Location</th>
-              <th>NUmber of votes</th>
+              <th>Number of votes</th>
               <!-- Add more columns as needed -->
             </tr>
           </thead>
           <tbody>
-            <tr v-for="element in elements" :key="element.id">
+            <tr v-for="element in elements" :key="element._id">
               <td>{{ element.title }}</td>
               <td>{{ element.location }}</td>
               <td>{{ element.no_votes }}</td>
@@ -44,6 +47,10 @@ th {
   padding: 20px; /* Adjust as needed */
 }
 
+.counter-container{
+  text-align: center;
+  font-size: 35px;
+}
 </style>
 
 <script lang="ts">
@@ -60,7 +67,8 @@ export default defineComponent ({
 
     data() {
         return {
-            elements:[] as VotingItems[]
+            elements:[] as VotingItems[],
+            overAllVotes: 0,
         };
     },
 
@@ -72,7 +80,14 @@ export default defineComponent ({
         axios
             .get(storageEndpoint + '/get')
             .then(response => (this.elements = response.data))
+            .then(() => this.calculateOverallVotes())
     },
-
+    methods: {
+      calculateOverallVotes() {
+      this.overAllVotes = this.elements.reduce((total, element) => {
+        return total + element.no_votes;
+      }, 0);
+    },
+    }
 })
 </script>
