@@ -14,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="element in elements" :key="element._id">
+            <tr v-for="element in elements" :key="element._id" :class="getRowColorClass(element)">
               <td>{{ element.title }}</td>
               <td>{{ element.location }}</td>
               <td>{{ element.no_votes }}</td>
@@ -50,6 +50,18 @@ th {
 .counter-container{
   text-align: center;
   font-size: 35px;
+}
+
+.red-row {
+  background-color: #ffdddd; /* Adjust the color as needed */
+}
+
+.yellow-row {
+  background-color: #ffffcc; /* Adjust the color as needed */
+}
+
+.green-row {
+  background-color: #d4edda; /* Adjust the color as needed */
 }
 </style>
 
@@ -87,6 +99,19 @@ export default defineComponent ({
       this.overAllVotes = this.elements.reduce((total, element) => {
         return total + element.no_votes;
       }, 0);
+    },
+
+    getRowColorClass(element: VotingItems) {
+      const percentage = (element.no_votes / this.overAllVotes) * 100;
+
+      switch (true){
+        case percentage < 10:
+          return 'red-row';
+        case percentage >= 10 && percentage <= 50:
+          return 'yellow-row';
+        case percentage >= 50:
+          return 'green-row';
+      }
     },
     }
 })

@@ -16,6 +16,6 @@ export default defineComponent({
   components: {
     NavBar,
     AddVote,
-},
+  }
 });
 </script>

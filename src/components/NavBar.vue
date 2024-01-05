@@ -74,7 +74,7 @@ export default defineComponent({
       this.tokenDialog = true;
     },
     validateToken() {
-      const correctToken = process.env.TOKEN;
+      const correctToken = process.env.VUE_APP_TOKEN;
       if (this.token === correctToken) {
         this.$router.push('/admin');
       } else {

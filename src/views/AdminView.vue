@@ -86,7 +86,7 @@ export default defineComponent({
   },
 
   methods: {
-    makeVote(elementId: number){
+    deleteItem(elementId: number){
       axios.patch(storageEndpoint + "/update/" + elementId);
       this.$router.push({path: '/votes'});
     },

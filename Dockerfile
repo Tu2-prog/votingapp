@@ -5,8 +5,8 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-ARG TOKEN
-ENV TOKEN=${TOKEN}
+ARG VUE_APP_TOKEN
+ENV VUE_APP_TOKEN=${VUE_APP_TOKEN}
 
 EXPOSE 8081
 
