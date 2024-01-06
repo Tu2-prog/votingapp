@@ -15,7 +15,7 @@
           <td>{{ element.title }}</td>
           <td>{{ element.location }}</td>
           <td> 
-            <v-btn elevated color="#d44d4d" class="delete-btn">Delete</v-btn>
+            <v-btn elevated color="#d44d4d" class="delete-btn" @click="deleteItem(element._id)">Delete</v-btn>
           </td>
         </tr>
       </tbody>
@@ -87,8 +87,8 @@ export default defineComponent({
 
   methods: {
     deleteItem(elementId: number){
-      axios.patch(storageEndpoint + "/update/" + elementId);
-      this.$router.push({path: '/votes'});
+      axios.delete(storageEndpoint + "/delete/" + elementId);
+      location.reload();
     },
   }
 });
