@@ -44,6 +44,7 @@ interface NavigationItem {
   title: string;
   icon: string;
   link: string;
+  restricted: boolean;
 }
 
 export default defineComponent({
@@ -54,16 +55,16 @@ export default defineComponent({
     token: '',
     showTokenError: false,
     items: [
-      { title: 'Home', icon: 'mdi-home', link: '/' },
-      { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/dashboard' },
-      { title: 'Votes', icon: 'mdi-chart-areaspline', link: '/votes' },
-      { title: 'About', icon: 'mdi-help-box', link: '/about' },
-      { title: 'Admin', icon: 'mdi-lock', link: '/admin' },
+      { title: 'Home', icon: 'mdi-home', link: '/' , restricted: false},
+      { title: 'Dashboard', icon: 'mdi-view-dashboard', link: '/dashboard', restricted: false },
+      { title: 'Votes', icon: 'mdi-chart-areaspline', link: '/votes', restricted: false },
+      { title: 'About', icon: 'mdi-help-box', link: '/about', restricted: false },
+      { title: 'Admin', icon: 'mdi-lock', link: '/admin', restricted: true },
     ],
   }),
   methods: {
     handleNavigation(item: NavigationItem) {
-      if (item.link === '/admin') {
+      if (item.restricted) {
         this.showTokenDialog();
       } else {
         this.$router.push(item.link);
